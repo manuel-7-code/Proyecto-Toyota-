@@ -1,0 +1,40 @@
+@model ToyotaLaPaz.Models.Usuario
+
+@{
+    ViewData["Title"] = "Registro de Usuario - Toyota La Paz";
+}
+
+<div class="container py-5" style="max-width: 500px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3 text-center">
+            <h4 class="mb-0 fw-bold">Crear Cuenta de Usuario</h4>
+            <small class="text-muted">Sistema Toyota La Paz</small>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Register" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Rol del Sistema</label>
+                    <select asp-for="RolID" class="form-select" asp-items="ViewBag.RolID">
+                        <option value="">-- Seleccione un Rol --</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre de Usuario</label>
+                    <input asp-for="NombreUsuario" class="form-control" placeholder="Ej. jflores" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Correo Electrónico</label>
+                    <input asp-for="CorreoElectronico" class="form-control" type="email" placeholder="correo@toyota.com" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Contraseña</label>
+                    <input asp-for="ContrasenaHash" class="form-control" type="password" placeholder="••••••••" />
+                </div>
+                <div class="d-grid gap-2 pt-2">
+                    <button type="submit" class="btn btn-danger py-2 fw-semibold">Registrar Usuario</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Ver lista de usuarios</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
