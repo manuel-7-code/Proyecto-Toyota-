@@ -1,0 +1,62 @@
+@model IEnumerable<ToyotaLaPaz.Models.Vehiculo>
+
+@{
+    ViewData["Title"] = "Gestión de Vehículos - Toyota La Paz";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Inventario de Vehículos</h2>
+            <p class="text-muted small">Gestión y control de unidades físicas de Toyota La Paz</p>
+        </div>
+        <a asp-action="Create" class="btn btn-danger shadow-sm">
+            + Registrar Vehículo
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="ps-3">VIN / Chasis</th>
+                            <th>Modelo</th>
+                            <th>Motor</th>
+                            <th>Color</th>
+                            <th>Precio Base ($us)</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    No hay vehículos registrados en la base de datos.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-3 fw-semibold">@item.VIN</td>
+                                    <td>@item.ModeloVehiculo?.NombreModelo</td>
+                                    <td>@item.Motor</td>
+                                    <td><span class="badge bg-light text-dark border">@item.Color</span></td>
+                                    <td class="fw-bold text-success">$ @item.PrecioBase.ToString("N2")</td>
+                                    <td>
+                                        <span class="badge bg-success">@item.EstadoVehiculo</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
