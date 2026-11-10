@@ -1,0 +1,44 @@
+@model ToyotaLaPaz.Models.ModeloVehiculo
+
+@{
+    ViewData["Title"] = "Modificar Modelo - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 500px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Modificar Modelo de Vehículo</h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="ModeloID" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre del Modelo</label>
+                    <input asp-for="NombreModelo" class="form-control" placeholder="Ej. Hilux, RAV4, Land Cruiser" />
+                    <span asp-validation-for="NombreModelo" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Año de Fabricación</label>
+                    <input asp-for="Fabricacion" class="form-control" type="number" placeholder="Ej. 2026" />
+                    <span asp-validation-for="Fabricacion" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Tipo de Vehículo</label>
+                    <select asp-for="TipoVehiculo" class="form-select">
+                        <option value="SUV">SUV</option>
+                        <option value="Camioneta">Camioneta</option>
+                        <option value="Sedán">Sedán</option>
+                        <option value="Vagoneta">Vagoneta</option>
+                        <option value="Comercial">Comercial</option>
+                    </select>
+                    <span asp-validation-for="TipoVehiculo" class="text-danger small"></span>
+                </div>
+                <div class="d-flex justify-content-between pt-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

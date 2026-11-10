@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ToyotaLaPaz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+598b43570c5aca2f1dc674d79b59a70ddefc96c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ToyotaLaPaz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ToyotaLaPaz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

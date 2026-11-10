@@ -27,6 +27,7 @@
                             <th>Color</th>
                             <th>Precio Base ($us)</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,11 +52,14 @@
                                     <td>
                                         <span class="badge bg-success">@item.EstadoVehiculo</span>
                                     </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.VehiculoID" class="btn btn-sm btn-outline-dark">Editar</a>
+                                    </td>
                                 </tr>
                             }
                         }
                     </tbody>
-                </table>
+                </table>    
             </div>
         </div>
     </div>

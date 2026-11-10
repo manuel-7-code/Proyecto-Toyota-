@@ -1,0 +1,60 @@
+@model IEnumerable<ToyotaLaPaz.Models.ModeloVehiculo>
+
+@{
+    ViewData["Title"] = "Gestión de Modelos - Toyota La Paz";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Catálogo de Modelos</h2>
+            <p class="text-muted small">Administración de tipos, años de fabricación y nombres de modelos Toyota</p>
+        </div>
+        <a asp-action="Create" class="btn btn-danger shadow-sm">
+            + Nuevo Modelo
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="ps-3">ID</th>
+                            <th>Nombre del Modelo</th>
+                            <th>Año de Fabricación</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    No hay modelos registrados.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-3 fw-semibold">#@item.ModeloID</td>
+                                    <td>@item.NombreModelo</td>
+                                    <td>@item.Fabricacion</td>
+                                    <td><span class="badge bg-light text-dark border">@item.TipoVehiculo</span></td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ModeloID" class="btn btn-sm btn-outline-dark">Editar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

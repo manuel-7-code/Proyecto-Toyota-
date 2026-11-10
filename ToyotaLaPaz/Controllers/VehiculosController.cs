@@ -42,5 +42,44 @@ namespace ToyotaLaPaz.Controllers
             ViewBag.ModeloID = new SelectList(_context.ModeloVehiculos, "ModeloID", "NombreModelo", vehiculo.ModeloID);
             return View(vehiculo);
         }
+
+        // GET: Vehiculos/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var vehiculo = await _context.Vehiculos.FindAsync(id);
+            if (vehiculo == null) return NotFound();
+
+            ViewBag.ModeloID = new SelectList(_context.ModeloVehiculos, "ModeloID", "NombreModelo", vehiculo.ModeloID);
+            return View(vehiculo);
+        }
+
+        // POST: Vehiculos/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("VehiculoID,ModeloID,ImportacionID,VIN,Motor,Color,PrecioBase,EstadoVehiculo")] Vehiculo vehiculo)
+        {
+            if (id != vehiculo.VehiculoID) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(vehiculo);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Vehiculos.Any(e => e.VehiculoID == vehiculo.VehiculoID))
+                        return NotFound();
+                    else
+                        throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.ModeloID = new SelectList(_context.ModeloVehiculos, "ModeloID", "NombreModelo", vehiculo.ModeloID);
+            return View(vehiculo);
+        }
     }
 }
