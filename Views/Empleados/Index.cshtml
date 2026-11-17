@@ -1,0 +1,77 @@
+@model IEnumerable<ToyotaLaPaz.Models.Empleados>
+
+@{
+    ViewData["Title"] = "Recursos Humanos - Toyota La Paz";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Gestión de Personal</h2>
+            <p class="text-muted small">Directorio de empleados, cargos y departamentos</p>
+        </div>
+        <a asp-action="Create" class="btn btn-danger shadow-sm">+ Registrar Empleado</a>
+    </div>
+
+    <!-- Filtro de consulta de personal (RF18 y RF21) -->
+    <form asp-action="Index" method="get" class="card border-0 shadow-sm p-3 mb-4 bg-light">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-5">
+                <label class="form-label small fw-semibold mb-1">Buscar por Nombre, CI o Cargo</label>
+                <input type="text" name="buscar" value="@ViewBag.BuscarActual" class="form-control" placeholder="Ej. Juan Pérez, 8472910 o Asesor..." />
+            </div>
+            <div class="col-md-4">
+                <label class="form-label small fw-semibold mb-1">Filtrar por Departamento</label>
+                <select name="departamentoId" class="form-select" asp-items="ViewBag.Departamentos">
+                    <option value="">-- Todos los Departamentos --</option>
+                </select>
+            </div>
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-dark w-100">Consultar</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="ps-3">Nombre Completo</th>
+                        <th>CI</th>
+                        <th>Departamento</th>
+                        <th>Cargo</th>
+                        <th>Contacto</th>
+                        <th>Salario ($us)</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-3 fw-semibold">@item.NombreCompleto</td>
+                            <td>@item.CI</td>
+                            <td><span class="badge bg-secondary">@item.Departamento?.NombreDepartamento</span></td>
+                            <td>@item.Cargo</td>
+                            <td>
+                                <div>@item.Telefono</div>
+                                <small class="text-muted">@item.Correo</small>
+                            </td>
+                            <td class="fw-semibold">$ @item.Salario.ToString("N2")</td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <a asp-action="Edit" asp-route-id="@item.EmpleadoID" class="btn btn-sm btn-outline-dark">Editar</a>
+                                    <form asp-action="Delete" asp-route-id="@item.EmpleadoID" method="post" onsubmit="return confirm('¿Seguro que deseas dar de baja a este empleado?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

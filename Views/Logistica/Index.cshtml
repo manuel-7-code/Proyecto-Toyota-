@@ -1,0 +1,70 @@
+@model IEnumerable<ToyotaLaPaz.Models.DistribucionLogistica>
+
+@{
+    ViewData["Title"] = "Control de Logística - Toyota La Paz";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Control de Logística y Distribución</h2>
+            <p class="text-muted small">Seguimiento de envíos, rutas, conductores y entregas</p>
+        </div>
+        <a asp-action="Create" class="btn btn-danger shadow-sm">+ Registrar Distribución / Envío</a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="ps-3">ID</th>
+                        <th>Vehículo (VIN)</th>
+                        <th>Ruta (Origen → Destino)</th>
+                        <th>Conductor</th>
+                        <th>Fecha Envío</th>
+                        <th>Entrega Estimada / Real</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-3 fw-bold">#@item.LogisticaID</td>
+                            <td>
+                                <div class="fw-semibold">@item.Vehiculo?.ModeloVehiculo?.NombreModelo</div>
+                                <small class="text-muted">VIN: @item.Vehiculo?.VIN</small>
+                            </td>
+                            <td>
+                                <span class="fw-semibold">@item.Origen</span>
+                                <span class="text-muted mx-1">→</span>
+                                <span class="fw-semibold text-primary">@item.Destino</span>
+                            </td>
+                            <td>@(item.ConductorAsignado ?? "Sin asignar")</td>
+                            <td>@item.FechaEnvio.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <div class="small text-muted">Est: @item.FechaEntregaEstimada.ToString("dd/MM/yyyy")</div>
+                                @if (item.FechaEntregaReal.HasValue)
+                                {
+                                    <div class="small text-success fw-semibold">Real: @item.FechaEntregaReal.Value.ToString("dd/MM/yyyy HH:mm")</div>
+                                }
+                            </td>
+                            <td>
+                                <span class="badge @(item.EstadoEnvio == "Entregado" ? "bg-success" : (item.EstadoEnvio == "Cancelado" ? "bg-danger" : "bg-warning text-dark"))">
+                                    @item.EstadoEnvio
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="EditEstado" asp-route-id="@item.LogisticaID" class="btn btn-sm btn-outline-dark">
+                                    Actualizar / Entregar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using ToyotaLaPaz.Models;
+
+namespace ToyotaLaPaz.Data
+{
+    public class ToyotaLaPazContext : DbContext
+    {
+        public ToyotaLaPazContext(DbContextOptions<ToyotaLaPazContext> options) : base(options) { }
+
+        public DbSet<Vehiculo> Vehiculos { get; set; }
+        public DbSet<ModeloVehiculo> ModeloVehiculos { get; set; }
+        public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
+        public DbSet<Rol> Roles { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Departamentos> Departamentos { get; set; }
+        public DbSet<DistribucionLogistica> DistribucionLogistica { get; set; }
+
+    }
+}
