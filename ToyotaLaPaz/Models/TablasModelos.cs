@@ -101,4 +101,64 @@ namespace ToyotaLaPaz.Models
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
     }
+
+    [Table("Clientes")]
+    public class Clientes
+    {
+        [Key]
+        public int ClienteID { get; set; }
+
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [StringLength(100)]
+        public string Nombre { get; set; } = string.Empty; // RF9
+
+        [Required(ErrorMessage = "El NIT/CI es obligatorio")]
+        [StringLength(20)]
+        public string NitCi { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string? Correo { get; set; }
+
+        [StringLength(20)]
+        public string? Telefono { get; set; }
+
+        [StringLength(150)]
+        public string? Direccion { get; set; }
+    }
+
+    [Table("Ventas")]
+    public class Ventas
+    {
+        [Key]
+        public int VentaID { get; set; }
+
+        [Required]
+        public int ClienteID { get; set; }
+        [ForeignKey("ClienteID")]
+        public virtual Clientes? Cliente { get; set; }
+
+        [Required]
+        public int VehiculoID { get; set; }
+        [ForeignKey("VehiculoID")]
+        public virtual Vehiculo? Vehiculo { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime FechaVenta { get; set; } = DateTime.Now; // RF12
+
+        [Column(TypeName = "decimal(12,2)")]
+        public decimal MontoTotal { get; set; }
+
+        [StringLength(50)]
+        public string EstadoVenta
+        {
+            get; set;
+        } = "Completada"; // RF15 / RF16
+
+        [StringLength(50)]
+        public string MetodoPago
+        {
+            get; set;
+        } = "Transferencia Bancaria"; // RF15
+    }
+
 }

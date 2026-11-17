@@ -9,10 +9,11 @@ namespace ToyotaLaPaz.Data
 
         public DbSet<Vehiculo> Vehiculos {get; set;}
         public DbSet<ModeloVehiculo> ModeloVehiculos {get; set;}
-        public DbSet<Cliente> Clientes {get; set;}
-        public DbSet<Venta> Ventas {get; set;}
+        public DbSet<Clientes> Clientes {get; set;}
+        public DbSet<Ventas> Ventas {get; set;}
         public DbSet<Empleado> Empleados{get; set;}
         public DbSet<Rol> Roles{get; set;}
-        public DbSet<Usuario> Usuarios{get; set;    }
+        public DbSet<Usuario> Usuarios{get; set;}
+        
     }
 }

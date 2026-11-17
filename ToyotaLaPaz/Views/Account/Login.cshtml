@@ -1,0 +1,42 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión - Toyota La Paz</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+    <div class="card shadow-lg border-0 rounded-4" style="max-width: 400px; width: 100%;">
+        <div class="card-header bg-dark text-white text-center py-4 rounded-top-4">
+            <h3 class="fw-bold mb-0">TOYOTA LA PAZ</h3>
+            <small class="text-secondary">Acceso al Sistema de Gestión</small>
+        </div>
+        <div class="card-body p-4">
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger py-2 small" role="alert">
+                    @ViewBag.Error
+                </div>
+            }
+            <form asp-action="Login" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre de Usuario</label>
+                    <input name="nombreUsuario" class="form-control" placeholder="Ej. admin" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Contraseña</label>
+                    <input name="contrasena" type="password" class="form-control" placeholder="••••••••" required />
+                </div>
+                <div class="d-grid gap-2 pt-2">
+                    <button type="submit" class="btn btn-danger py-2 fw-semibold">Iniciar Sesión</button>
+                    <a asp-action="Register" class="btn btn-outline-secondary py-2">Crear Cuenta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

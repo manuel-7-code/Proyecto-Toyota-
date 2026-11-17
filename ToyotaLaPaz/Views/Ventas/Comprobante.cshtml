@@ -1,0 +1,51 @@
+@model ToyotaLaPaz.Models.Ventas
+@{ ViewData["Title"] = "Comprobante de Venta"; }
+
+<div class="container py-5" style="max-width: 700px;">
+    <div class="card shadow border-0 rounded-4 p-4">
+        <div class="text-center border-bottom pb-3 mb-4">
+            <h2 class="fw-bold text-danger mb-0">TOYOTA LA PAZ</h2>
+            <p class="text-muted small mb-1">Comprobante Oficial de Venta de Vehículo</p>
+            <span class="badge bg-dark">Transacción N° #@Model.VentaID</span>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <h6 class="fw-bold text-secondary">Datos del Cliente:</h6>
+                <p class="mb-1"><strong>Nombre:</strong> @Model.Cliente?.Nombre</p>
+                <p class="mb-1"><strong>NIT/CI:</strong> @Model.Cliente?.NitCi</p>
+            </div>
+            <div class="col-6 text-end">
+                <h6 class="fw-bold text-secondary">Detalles de Operación:</h6>
+                <p class="mb-1"><strong>Fecha:</strong> @Model.FechaVenta.ToString("dd/MM/yyyy HH:mm")</p>
+                <p class="mb-1"><strong>Método de Pago:</strong> @Model.MetodoPago</p>
+            </div>
+        </div>
+
+        <div class="table-responsive my-3">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Modelo</th>
+                        <th>VIN / Chasis</th>
+                        <th>Color</th>
+                        <th class="text-end">Precio ($us)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Vehiculo?.ModeloVehiculo?.NombreModelo (@Model.Vehiculo?.ModeloVehiculo?.Fabricacion)</td>
+                        <td>@Model.Vehiculo?.VIN</td>
+                        <td>@Model.Vehiculo?.Color</td>
+                        <td class="text-end fw-bold">$ @Model.MontoTotal.ToString("N2")</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+            <a asp-action="Index" class="btn btn-outline-secondary">Ir al Historial de Ventas</a>
+            <button onclick="window.print()" class="btn btn-dark px-4">Imprimir Comprobante</button>
+        </div>
+    </div>
+</div>

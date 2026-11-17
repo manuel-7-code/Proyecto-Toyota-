@@ -1,0 +1,44 @@
+@model IEnumerable<ToyotaLaPaz.Models.Clientes>
+@{ ViewData["Title"] = "Gestión de Clientes"; }
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Directorio de Clientes</h2>
+            <p class="text-muted small">Gestión y consulta de compradores Toyota La Paz</p>
+        </div>
+        <a asp-action="Create" class="btn btn-danger">+ Nuevo Cliente</a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="ps-3">ID</th>
+                        <th>Nombre / Razón Social</th>
+                        <th>NIT / CI</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-3 fw-semibold">#@item.ClienteID</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.NitCi</td>
+                            <td>@item.Correo</td>
+                            <td>@item.Telefono</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ClienteID" class="btn btn-sm btn-outline-dark">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -580,16 +580,13 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/10.0.14": {
+      "Microsoft.EntityFrameworkCore.Tools/11.0.0": {
         "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "10.0.14"
-        },
         "compile": {
           "lib/net10.0/_._": {}
         },
         "runtime": {
-          "lib/net10.0/_._": {}
+          "lib/net10.0/EFCore.Tools.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyModel/10.0.14": {
@@ -2422,20 +2419,18 @@
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/10.0.14": {
-      "sha512": "PyslTG7UWVz/KOwo0nL4dvhfOn7XxBXJs9kG2dJ6yz2CH7xuJVPwcU0qFuvao5wbVDmU8/7q0pm9NXiOFXoWuQ==",
+    "Microsoft.EntityFrameworkCore.Tools/11.0.0": {
+      "sha512": "mhTDLNxH23ha4OqeoeUNcom0vMRLWGRtYrVN0HXiWmBnPs5tAIFrupabkidKDgesI8fPQbUiD01J51haSWONRA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/10.0.14",
+      "path": "microsoft.entityframeworkcore.tools/11.0.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "docs/PACKAGE.md",
-        "lib/net10.0/_._",
-        "lib/net8.0/_._",
-        "lib/net9.0/_._",
-        "microsoft.entityframeworkcore.tools.10.0.14.nupkg.sha512",
+        "README.md",
+        "lib/net10.0/EFCore.Tools.dll",
+        "microsoft.entityframeworkcore.tools.11.0.0.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -2443,11 +2438,8 @@
         "tools/EntityFrameworkCore.psm1",
         "tools/about_EntityFrameworkCore.help.txt",
         "tools/init.ps1",
-        "tools/net472/any/ef.exe",
-        "tools/net472/win-arm64/ef.exe",
-        "tools/net472/win-x86/ef.exe",
-        "tools/net8.0/any/ef.dll",
-        "tools/net8.0/any/ef.runtimeconfig.json"
+        "tools/net/ef.dll",
+        "tools/net/ef.runtimeconfig.json"
       ]
     },
     "Microsoft.Extensions.DependencyModel/10.0.14": {
@@ -3141,7 +3133,7 @@
     "net10.0": [
       "Microsoft.EntityFrameworkCore.Design >= 10.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.14",
-      "Microsoft.EntityFrameworkCore.Tools >= 10.0.14"
+      "Microsoft.EntityFrameworkCore.Tools >= 11.0.0"
     ]
   },
   "packageFolders": {
@@ -3151,11 +3143,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juanm\\OneDrive\\Documentos\\JuanMa\\TOYOTA\\ToyotaLaPaz\\ToyotaLaPaz.csproj",
+      "projectUniqueName": "C:\\Users\\juanm\\OneDrive\\Documentos\\EMI\\TOYOTA\\Proyecto-Toyota-\\ToyotaLaPaz\\ToyotaLaPaz.csproj",
       "projectName": "ToyotaLaPaz",
-      "projectPath": "C:\\Users\\juanm\\OneDrive\\Documentos\\JuanMa\\TOYOTA\\ToyotaLaPaz\\ToyotaLaPaz.csproj",
+      "projectPath": "C:\\Users\\juanm\\OneDrive\\Documentos\\EMI\\TOYOTA\\Proyecto-Toyota-\\ToyotaLaPaz\\ToyotaLaPaz.csproj",
       "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juanm\\OneDrive\\Documentos\\JuanMa\\TOYOTA\\ToyotaLaPaz\\obj\\",
+      "outputPath": "C:\\Users\\juanm\\OneDrive\\Documentos\\EMI\\TOYOTA\\Proyecto-Toyota-\\ToyotaLaPaz\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3210,7 +3202,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[10.0.14, )"
+            "version": "[11.0.0, )"
           }
         },
         "imports": [
@@ -3232,7 +3224,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -3655,7 +3647,7 @@
       "code": "NU1902",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7",
+      "message": "El paquete \"System.Security.Cryptography.Pkcs\" 9.0.11 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-2fmv-rv2c-59x7",
       "libraryId": "System.Security.Cryptography.Pkcs",
       "targetGraphs": [
         "net10.0"
@@ -3665,7 +3657,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx",
+      "message": "El paquete \"System.Security.Cryptography.Pkcs\" 9.0.11 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-846f-f764-76mx",
       "libraryId": "System.Security.Cryptography.Pkcs",
       "targetGraphs": [
         "net10.0"

@@ -1,0 +1,51 @@
+@model ToyotaLaPaz.Models.Clientes
+
+@{
+    ViewData["Title"] = "Modificar Cliente - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 550px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Modificar Datos del Cliente</h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="ClienteID" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre Completo / Razón Social</label>
+                    <input asp-for="Nombre" class="form-control" required />
+                    <span asp-validation-for="Nombre" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">NIT o Cédula de Identidad (CI)</label>
+                    <input asp-for="NitCi" class="form-control" required />
+                    <span asp-validation-for="NitCi" class="text-danger small"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Teléfono / Celular</label>
+                        <input asp-for="Telefono" class="form-control" />
+                        <span asp-validation-for="Telefono" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Correo Electrónico</label>
+                        <input asp-for="Correo" type="email" class="form-control" />
+                        <span asp-validation-for="Correo" class="text-danger small"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Dirección</label>
+                    <input asp-for="Direccion" class="form-control" />
+                    <span asp-validation-for="Direccion" class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex justify-content-between pt-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Actualizar Cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
