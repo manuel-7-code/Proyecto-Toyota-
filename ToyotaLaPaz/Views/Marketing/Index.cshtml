@@ -1,0 +1,164 @@
+@model IEnumerable<ToyotaLaPaz.Models.CampanasMarketing>
+
+@{
+    ViewData["Title"] = "Marketing y Promociones - Toyota La Paz";
+    var promociones = ViewBag.Promociones as List<ToyotaLaPaz.Models.PromocionesVehiculo>;
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">Gestión de Campañas de Marketing</h2>
+            <p class="text-muted small">Campañas publicitarias, promociones por modelo Toyota y resultados comerciales</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a asp-action="CreatePromocion" class="btn btn-outline-dark">+ Nueva Promoción</a>
+            <a asp-action="CreateCampana" class="btn btn-danger shadow-sm">+ Nueva Campaña</a>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Resultados (RF49) -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-dark text-white h-100">
+                <div class="card-body">
+                    <small class="text-uppercase text-secondary fw-bold">Presupuesto Total Invertido</small>
+                    <h3 class="fw-bold mt-1 mb-0">$us @(((decimal)ViewBag.TotalInvertido).ToString("N2"))</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+                <div class="card-body">
+                    <small class="text-uppercase text-muted fw-bold">Promociones Vigentes Hoy</small>
+                    <h3 class="fw-bold text-success mt-1 mb-0">@ViewBag.TotalPromocionesActivas</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+                <div class="card-body">
+                    <small class="text-uppercase text-muted fw-bold">Ventas en Periodo de Campaña</small>
+                    <h3 class="fw-bold text-danger mt-1 mb-0">@ViewBag.VentasEnCampana unidades</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtro por Canal de Difusión -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body py-3">
+            <form method="get" class="row g-2 align-items-center">
+                <div class="col-md-4">
+                    <select name="canal" class="form-select">
+                        <option value="">-- Todos los canales de difusión --</option>
+                        <option value="Redes Sociales (Meta / TikTok)" selected="@(ViewBag.CanalActual == "Redes Sociales (Meta / TikTok)")">Redes Sociales (Meta / TikTok)</option>
+                        <option value="Feria FIPAZ / Expocruz" selected="@(ViewBag.CanalActual == "Feria FIPAZ / Expocruz")">Feria FIPAZ / Expocruz</option>
+                        <option value="Televisión y Radio" selected="@(ViewBag.CanalActual == "Televisión y Radio")">Televisión y Radio</option>
+                        <option value="Showroom La Paz / El Alto" selected="@(ViewBag.CanalActual == "Showroom La Paz / El Alto")">Showroom La Paz / El Alto</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-dark">Filtrar</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de Campañas (RF44, RF45, RF49) -->
+    <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Campañas de Marketing Registradas</h5>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">ID</th>
+                        <th>Campaña</th>
+                        <th>Canal de Difusión</th>
+                        <th>Vigencia</th>
+                        <th>Presupuesto</th>
+                        <th>Promociones</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-3 fw-bold">#@item.CampanaID</td>
+                            <td class="fw-semibold">@item.NombreCampana</td>
+                            <td><span class="badge bg-light text-dark border">@item.CanalDifusion</span></td>
+                            <td>
+                                <small>@item.FechaInicio.ToString("dd/MM/yyyy") al @item.FechaFin.ToString("dd/MM/yyyy")</small>
+                            </td>
+                            <td class="fw-bold">$us @item.Presupuesto.ToString("N2")</td>
+                            <td>
+                                <span class="badge bg-primary">@item.Promociones.Count asociada(s)</span>
+                            </td>
+                            <td>
+                                <span class="badge @(item.EstadoCampana == "Activa" ? "bg-success" : (item.EstadoCampana == "Programada" ? "bg-info text-dark" : "bg-secondary"))">
+                                    @item.EstadoCampana
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <a asp-action="EditCampana" asp-route-id="@item.CampanaID" class="btn btn-sm btn-outline-dark">
+                                        Editar 
+                                    </a>
+                                    <a asp-action="CreatePromocion" asp-route-campanaId="@item.CampanaID" class="btn btn-sm btn-outline-danger">
+                                        + Promo
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Tabla de Promociones Asociadas a Vehículos (RF46, RF47, RF48) -->
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-header bg-secondary text-white py-3">
+            <h5 class="mb-0 fw-bold">Promociones por Modelo de Vehículo</h5>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th class="ps-3">ID</th>
+                        <th>Promoción</th>
+                        <th>Campaña Padre</th>
+                        <th>Modelo Toyota Asociado</th>
+                        <th>Vigencia (RF48)</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (promociones != null)
+                    {
+                        @foreach (var p in promociones)
+                        {
+                            <tr>
+                                <td class="ps-3 fw-bold">#@p.PromocionID</td>
+                                <td class="fw-semibold">@p.NombrePromocion</td>
+                                <td>@p.Campana?.NombreCampana</td>
+                                <td><span class="badge bg-dark">@p.ModeloVehiculo?.NombreModelo</span></td>
+                                <td>@p.FechaInicioVigencia.ToString("dd/MM/yyyy") — @p.FechaFinVigencia.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <span class="badge @(p.EstaVigente ? "bg-success" : "bg-secondary")">
+                                        @(p.EstaVigente ? "Vigente" : "Fuera de vigencia")
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+@model ToyotaLaPaz.Models.CampanasMarketing
+
+@{
+    ViewData["Title"] = "Registrar Campaña - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 580px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Registrar Campaña de Marketing </h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="CreateCampana" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre de la Campaña</label>
+                    <input asp-for="NombreCampana" class="form-control" placeholder="Ej. Toyota Fest La Paz 2026" required />
+                    <span asp-validation-for="NombreCampana" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Canal de Difusión</label>
+                    <select asp-for="CanalDifusion" class="form-select" required>
+                        <option value="">-- Seleccione Canal --</option>
+                        <option value="Redes Sociales (Meta / TikTok)">Redes Sociales (Meta / TikTok)</option>
+                        <option value="Feria FIPAZ / Expocruz">Feria FIPAZ / Expocruz</option>
+                        <option value="Televisión y Radio">Televisión y Radio</option>
+                        <option value="Showroom La Paz / El Alto">Showroom La Paz / El Alto</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Presupuesto Asignado ($us)</label>
+                    <input asp-for="Presupuesto" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Fecha de Inicio</label>
+                        <input asp-for="FechaInicio" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Fecha de Finalización</label>
+                        <input asp-for="FechaFin" type="date" class="form-control" value="@DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd")" required />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Guardar Campaña</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

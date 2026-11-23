@@ -1,0 +1,51 @@
+@model ToyotaLaPaz.Models.PromocionesVehiculo
+
+@{
+    ViewData["Title"] = "Registrar Promoción - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 580px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Registrar Promoción de Vehículo </h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="CreatePromocion" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Campaña de Marketing</label>
+                    <select asp-for="CampanaID" class="form-select" asp-items="ViewBag.CampanaID" required>
+                        <option value="">-- Seleccione Campaña --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre / Detalle de la Promoción </label>
+                    <input asp-for="NombrePromocion" class="form-control" placeholder="Ej. Bono de $us 1.500 + Seguro Gratis 1 año" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Modelo de Vehículo Toyota Asociado </label>
+                    <select asp-for="ModeloID" class="form-select" asp-items="ViewBag.ModeloID" required>
+                        <option value="">-- Seleccione Modelo Toyota --</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Inicio de Vigencia </label>
+                        <input asp-for="FechaInicioVigencia" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Fin de Vigencia </label>
+                        <input asp-for="FechaFinVigencia" type="date" class="form-control" value="@DateTime.Now.AddDays(15).ToString("yyyy-MM-dd")" required />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Guardar Promoción</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

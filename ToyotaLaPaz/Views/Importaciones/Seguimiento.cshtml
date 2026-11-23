@@ -1,0 +1,46 @@
+@model ToyotaLaPaz.Models.ImportacionesVehiculos
+
+@{
+    ViewData["Title"] = "Seguimiento de Importación - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 550px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Seguimiento y Recepción — Importación #@Model.ImportacionID</h5>
+            <small class="text-secondary">Proveedor: @Model.Proveedor?.NombreProveedor (@Model.Proveedor?.PaisOrigen)</small>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Seguimiento" method="post">
+                <input type="hidden" name="id" value="@Model.ImportacionID" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Estado de Seguimiento </label>
+                    <select name="estadoSeguimiento" class="form-select" required>
+                        <option value="En tránsito" selected="@(Model.EstadoSeguimiento == "En tránsito")">En tránsito</option>
+                        <option value="En Puerto (Arica / Iquique)" selected="@(Model.EstadoSeguimiento == "En Puerto (Arica / Iquique)")">En Puerto (Arica / Iquique)</option>
+                        <option value="En Aduana La Paz" selected="@(Model.EstadoSeguimiento == "En Aduana La Paz")">En Aduana La Paz</option>
+                        <option value="Recibido en Aduana / Almacén" selected="@(Model.EstadoSeguimiento == "Recibido en Aduana / Almacén")">Recibido en Aduana / Almacén </option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Actualizar Costo de Aranceles ($us) </label>
+                    <input type="number" step="0.01" name="costoAranceles" class="form-control" value="@Model.CostoAranceles" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Fecha de Recepción Real en La Paz </label>
+                    <input type="datetime-local" name="fechaRecepcionReal" class="form-control" 
+                           value="@(Model.FechaRecepcionReal?.ToString("yyyy-MM-ddTHH:mm") ?? DateTime.Now.ToString("yyyy-MM-ddTHH:mm"))" />
+                    <div class="form-text">Se guardará al marcar como "Recibido en Aduana / Almacén".</div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-success px-4">Actualizar Importación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

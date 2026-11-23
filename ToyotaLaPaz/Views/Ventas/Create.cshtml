@@ -29,18 +29,20 @@
                     <select asp-for="VehiculoID" class="form-select" asp-items="ViewBag.VehiculoID" required>
                         <option value="">-- Seleccione Vehículo en Stock --</option>
                     </select>
-                    <div class="form-text">Al confirmar la venta, el vehículo pasará automáticamente a estado "Vendido".</div>
+                    <div class="form-text">Al confirmar la venta, el vehículo pasará automáticamente a estado "Vendido".
+                    </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">Monto Final ($us)</label>
-                        <input asp-for="MontoTotal" type="number" step="0.01" class="form-control" placeholder="Ej. 48500.00" required />
+                        <input asp-for="MontoTotal" type="number" step="0.01" class="form-control"
+                               placeholder="Ej. 48500.00" required />
                         <span asp-validation-for="MontoTotal" class="text-danger small"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-semibold">Método de Pago (RF15)</label>
+                        <label class="form-label fw-semibold">Método de Pago</label>
                         <select asp-for="MetodoPago" class="form-select" required>
                             <option value="Transferencia Bancaria">Transferencia Bancaria</option>
                             <option value="Efectivo ($us)">Efectivo ($us)</option>
@@ -48,13 +50,20 @@
                             <option value="Crédito Bancario">Crédito Bancario</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Asesor / Empleado Responsable</label>
+                        <select asp-for="EmpleadoID" class="form-select" asp-items="ViewBag.EmpleadoID" required>
+                            <option value="">-- Seleccione un Empleado --</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="d-flex justify-content-between pt-3 border-top">
                     <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
-                    <button type="submit" class="btn btn-danger px-4 fw-semibold">Confirmar Venta y Generar Comprobante</button>
-                </div>
-            </form>
+                    <button type="submit" class="btn btn-danger px-4 fw-semibold">Confirmar Venta y Generar
+                        Comprobante</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>

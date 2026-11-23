@@ -1,0 +1,55 @@
+@model ToyotaLaPaz.Models.ImportacionesVehiculos
+
+@{
+    ViewData["Title"] = "Registrar Importación - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 600px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Registrar Orden de Importación </h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Proveedor Internacional</label>
+                    <select asp-for="ProveedorID" class="form-select" asp-items="ViewBag.ProveedorID" required>
+                        <option value="">-- Seleccione Proveedor --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Puerto / Ruta de Destino</label>
+                    <input asp-for="PuertoDestino" class="form-control" value="Arica / Iquique - Aduana La Paz" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Fecha de Embarque</label>
+                        <input asp-for="FechaEmbarque" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Fecha Estimada de Llegada</label>
+                        <input asp-for="FechaEstimadaLlegada" type="date" class="form-control" value="@DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Costo Total de Envío / Flete ($us) </label>
+                        <input asp-for="CostoTotalEnvio" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Costo de Aranceles / Aduana ($us) </label>
+                        <input asp-for="CostoAranceles" type="number" step="0.01" class="form-control" value="0.00" />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Registrar Importación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

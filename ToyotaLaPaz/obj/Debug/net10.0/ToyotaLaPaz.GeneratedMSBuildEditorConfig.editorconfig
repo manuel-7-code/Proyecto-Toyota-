@@ -51,12 +51,68 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Empleados/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Empleados/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Empleados/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Importaciones/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1wb3J0YWNpb25lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Importaciones/CreateProveedor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1wb3J0YWNpb25lc1xDcmVhdGVQcm92ZWVkb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Importaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1wb3J0YWNpb25lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Importaciones/Seguimiento.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1wb3J0YWNpb25lc1xTZWd1aW1pZW50by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Logistica/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naXN0aWNhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Logistica/EditEstado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naXN0aWNhXEVkaXRFc3RhZG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Logistica/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naXN0aWNhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Marketing/CreateCampana.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0aW5nXENyZWF0ZUNhbXBhbmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Marketing/CreatePromocion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0aW5nXENyZWF0ZVByb21vY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Marketing/EditCampana.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0aW5nXEVkaXRDYW1wYW5hLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/Marketing/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0aW5nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/juanm/OneDrive/Documentos/EMI/TOYOTA/Proyecto-Toyota-/ToyotaLaPaz/Views/ModelosVehiculo/Create.cshtml]

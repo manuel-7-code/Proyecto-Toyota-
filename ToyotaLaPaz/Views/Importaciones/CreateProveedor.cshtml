@@ -1,0 +1,54 @@
+@model ToyotaLaPaz.Models.Proveedores
+
+@{
+    ViewData["Title"] = "Registrar Proveedor - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 550px;">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Registrar Proveedor Internacional</h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="CreateProveedor" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre del Proveedor / Planta</label>
+                    <input asp-for="NombreProveedor" class="form-control" placeholder="Ej. Toyota Motor Corporation - Planta Takaoka" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">País de Origen (RF39)</label>
+                    <select asp-for="PaisOrigen" class="form-select" required>
+                        <option value="">-- Seleccione País --</option>
+                        <option value="Japón">Japón</option>
+                        <option value="Argentina">Argentina (Planta Zárate)</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Tailandia">Tailandia</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Persona de Contacto</label>
+                    <input asp-for="Contacto" class="form-control" placeholder="Ej. Kenji Takahashi" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Teléfono</label>
+                        <input asp-for="Telefono" class="form-control" placeholder="+81 565-28-2121" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Correo Electrónico</label>
+                        <input asp-for="Correo" type="email" class="form-control" placeholder="export@toyota.jp" />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">Guardar Proveedor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

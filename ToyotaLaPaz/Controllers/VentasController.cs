@@ -27,8 +27,8 @@ namespace ToyotaLaPaz.Controllers
         public IActionResult Create()
         {
             ViewBag.ClienteID = new SelectList(_context.Clientes, "ClienteID", "Nombre");
-            // RF13: Solo mostrar vehículos que estén "En Stock"
             ViewBag.VehiculoID = new SelectList(_context.Vehiculos.Where(v => v.EstadoVehiculo == "En Stock"), "VehiculoID", "VIN");
+            ViewBag.EmpleadoID = new SelectList(_context.Empleados.Where(e => e.Estado), "EmpleadoID", "NombreCompleto"); // <--- Añadir esto
             return View();
         }
 
