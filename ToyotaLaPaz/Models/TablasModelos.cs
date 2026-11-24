@@ -28,16 +28,6 @@ namespace ToyotaLaPaz.Models
         public string TipoVehiculo { get; set; } = string.Empty;
     }
 
-    [Table("Clientes")]
-    public class Cliente
-    {
-        [Key]
-        public int ClienteID { get; set; }
-        public string NombreCompleto { get; set; } = string.Empty;
-        public string NIT_CI { get; set; } = string.Empty;
-        public string Telefono { get; set; } = string.Empty;
-    }
-
     [Table("Ventas")]
     public class Venta
     {

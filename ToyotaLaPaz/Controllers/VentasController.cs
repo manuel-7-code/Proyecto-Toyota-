@@ -28,14 +28,14 @@ namespace ToyotaLaPaz.Controllers
         {
             ViewBag.ClienteID = new SelectList(_context.Clientes, "ClienteID", "Nombre");
             ViewBag.VehiculoID = new SelectList(_context.Vehiculos.Where(v => v.EstadoVehiculo == "En Stock"), "VehiculoID", "VIN");
-            ViewBag.EmpleadoID = new SelectList(_context.Empleados.Where(e => e.Estado), "EmpleadoID", "NombreCompleto"); // <--- Añadir esto
+            ViewBag.EmpleadoID = new SelectList(_context.Empleados, "EmpleadoID", "Nombres");
             return View();
         }
 
         // RF12, RF15 & RF16: Registrar venta, pago y generar comprobante
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteID,VehiculoID,MontoTotal,MetodoPago")] Ventas venta)
+        public async Task<IActionResult> Create([Bind("ClienteID,VehiculoID,EmpleadoID,MontoTotal,MetodoPago")] Ventas venta)
         {
             if (ModelState.IsValid)
             {
@@ -47,6 +47,21 @@ namespace ToyotaLaPaz.Controllers
                 }
                 else
                 {
+                    // Asegurar un EmpleadoID válido si no se envió o quedó en 0
+                    if (venta.EmpleadoID == 0)
+                    {
+                        var empleadoValido = await _context.Empleados.FirstOrDefaultAsync();
+                        if (empleadoValido == null)
+                        {
+                            ModelState.AddModelError("", "No existe ningún empleado registrado para asignar a la venta.");
+                            ViewBag.ClienteID = new SelectList(_context.Clientes, "ClienteID", "Nombre", venta.ClienteID);
+                            ViewBag.VehiculoID = new SelectList(_context.Vehiculos.Where(v => v.EstadoVehiculo == "En Stock"), "VehiculoID", "VIN", venta.VehiculoID);
+                            ViewBag.EmpleadoID = new SelectList(_context.Empleados, "EmpleadoID", "Nombres", venta.EmpleadoID);
+                            return View(venta);
+                        }
+                        venta.EmpleadoID = empleadoValido.EmpleadoID;
+                    }
+
                     // Cambiar estado del vehículo a "Vendido"
                     vehiculo.EstadoVehiculo = "Vendido";
                     _context.Update(vehiculo);
@@ -61,8 +76,10 @@ namespace ToyotaLaPaz.Controllers
                     return RedirectToAction(nameof(Comprobante), new { id = venta.VentaID });
                 }
             }
+
             ViewBag.ClienteID = new SelectList(_context.Clientes, "ClienteID", "Nombre", venta.ClienteID);
             ViewBag.VehiculoID = new SelectList(_context.Vehiculos.Where(v => v.EstadoVehiculo == "En Stock"), "VehiculoID", "VIN", venta.VehiculoID);
+            ViewBag.EmpleadoID = new SelectList(_context.Empleados, "EmpleadoID", "Nombres", venta.EmpleadoID);
             return View(venta);
         }
 

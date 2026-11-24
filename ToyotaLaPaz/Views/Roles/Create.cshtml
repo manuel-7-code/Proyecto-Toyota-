@@ -1,0 +1,33 @@
+@model ToyotaLaPaz.Models.Rol
+
+@{
+    ViewData["Title"] = "Crear Rol - Toyota La Paz";
+}
+
+<div class="container py-4" style="max-width: 520px;">
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold">Registrar Rol del Sistema</h5>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre del Rol</label>
+                    <input asp-for="NombreRol" class="form-control" placeholder="Ej. Administrador, Ventas, Logística" required />
+                    <span asp-validation-for="NombreRol" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Descripción</label>
+                    <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Descripción de permisos o funciones del rol (opcional)"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+                    <button type="submit" class="btn btn-danger px-4">Guardar Rol</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -51,10 +51,11 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Asesor / Empleado Responsable</label>
+                        <label asp-for="EmpleadoID" class="form-label fw-semibold">Empleado</label>
                         <select asp-for="EmpleadoID" class="form-select" asp-items="ViewBag.EmpleadoID" required>
-                            <option value="">-- Seleccione un Empleado --</option>
+                            <option value="">-- Seleccione Empleado --</option>
                         </select>
+                        <span asp-validation-for="EmpleadoID" class="text-danger small"></span>
                     </div>
                 </div>
 

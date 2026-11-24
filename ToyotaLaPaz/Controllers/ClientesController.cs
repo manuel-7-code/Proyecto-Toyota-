@@ -20,7 +20,7 @@ namespace ToyotaLaPaz.Controllers
         // RF9: Registrar cliente (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteID,Nombre,NitCi,Correo,Telefono,Direccion")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("ClienteID,Nombre,NitCi,Correo,Telefono,Direccion")] Clientes cliente)
         {
             if (ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace ToyotaLaPaz.Controllers
         // RF11: Modificar cliente (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClienteID,Nombre,NitCi,Correo,Telefono,Direccion")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("ClienteID,Nombre,NitCi,Correo,Telefono,Direccion")] Clientes cliente)
         {
             if (id != cliente.ClienteID) return NotFound();
 
